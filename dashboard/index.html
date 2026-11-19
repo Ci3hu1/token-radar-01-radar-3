@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RADAR-3 — Token Launch Radar: pre-token protocols ranked by fitted implied value</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>RADAR-3 <span>Token Launch Radar</span></h1>
+    <p class="sub">Every pre-token protocol ranked by an implied value <b>fitted from traded tokens</b> — not a name list. Snapshot 2026-11-14, DefiLlama. Judge: the formula, the fit and all four validations are on this page.</p>
+  </div>
+  <div class="kpis" id="kpis"></div>
+</header>
+<main>
+  <section class="panel" id="method">
+    <h2>How the value is computed</h2>
+    <div id="method-body"><p>Loading model…</p></div>
+  </section>
+  <nav class="tabs" id="tabs">
+    <button data-tab="board" class="on">Pre-token board</button>
+    <button data-tab="live">Live tokens / anchors</button>
+    <button data-tab="accounted">All 758 accounted</button>
+  </nav>
+  <section class="panel" id="board-panel">
+    <div class="filters">
+      <input id="q" type="search" placeholder="Search name or slug…" aria-label="Search">
+      <select id="cat" aria-label="Category"><option value="all">All categories</option></select>
+      <select id="chain" aria-label="Chain"><option value="all">All chains</option></select>
+      <select id="minTvl" aria-label="Minimum TVL">
+        <option value="0">Any TVL</option><option value="50000000">TVL ≥ $50M</option>
+        <option value="100000000">TVL ≥ $100M</option><option value="1000000000">TVL ≥ $1B</option>
+      </select>
+      <label class="watch"><input id="watchOnly" type="checkbox"> Watchlist only (40)</label>
+      <span class="count" id="count"></span>
+    </div>
+    <div class="tablewrap"><table id="board">
+      <thead><tr>
+        <th data-sort="rank">Rank</th><th data-sort="name">Protocol</th><th data-sort="category">Category</th>
+        <th data-sort="tvl">TVL</th><th data-sort="change">7d</th><th data-sort="age">Age</th>
+        <th data-sort="implied">Implied value</th><th>Farm verdict</th>
+      </tr></thead>
+      <tbody id="rows"></tbody>
+    </table></div>
+    <p class="hint">Click a row for the detail view: factor breakdown, comps used, rank range, and the netted farm plan. Sort by clicking a column header.</p>
+  </section>
+  <section class="panel hidden" id="live-panel">
+    <h2>Live tokens — the anchors the model is fitted on</h2>
+    <p class="note">These protocols already record a token, so they are <b>never</b> on the ranked board. Their market caps are the training data: the fitted curve below prices the pre-token board.</p>
+    <div class="tablewrap"><table><thead><tr><th>Protocol</th><th>Symbol</th><th>Category</th><th>TVL</th><th>Market cap</th><th>MCap / TVL</th></tr></thead><tbody id="live-rows"></tbody></table></div>
+  </section>
+  <section class="panel hidden" id="accounted-panel">
+    <h2>All 758 protocols accounted for</h2>
+    <p id="accounting-line"></p>
+    <div class="tablewrap"><table><thead><tr><th>Protocol</th><th>Category</th><th>Why it is not ranked</th></tr></thead><tbody id="excluded-rows"></tbody></table></div>
+  </section>
+</main>
+<aside id="drawer" class="hidden" aria-label="Protocol detail"></aside>
+<footer><p id="foot"></p></footer>
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
